@@ -1,0 +1,58 @@
+// QWPCQNG.idl : IDL source for QWPCQNG
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (QWPCQNG.tlb) and marshalling code.
+
+#include "olectl.h"
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(C59FF083-E24E-4ACE-A04A-CA51BE626DFE),
+	dual,
+	nonextensible,
+	helpstring("IPCQNG Interface"),
+	pointer_default(unique)
+]
+interface IPCQNG : IDispatch{
+	[id(1), helpstring("method Open")] HRESULT Open(void);
+	[id(2), helpstring("method Close")] HRESULT Close(void);
+	[id(3), helpstring("method GetMode")] HRESULT GetMode([out,retval] FLOAT* Mode);
+	[id(4), helpstring("method SetMode")] HRESULT SetMode([in] FLOAT Mode);
+	[id(5), helpstring("method Clear")] HRESULT Clear(void);
+	[id(6), helpstring("method Reset")] HRESULT Reset(void);
+	[propget, id(7), helpstring("property RandInt32")] HRESULT RandInt32([out, retval] LONG* pVal);
+	[propget, id(8), helpstring("property RandUniform")] HRESULT RandUniform([out, retval] DOUBLE* pVal);
+	[propget, id(9), helpstring("property RandNormal")] HRESULT RandNormal([out, retval] DOUBLE* pVal);
+	[propget, id(10), helpstring("property GetBytes")] HRESULT RandBytes([in] LONG Length, [out, retval] VARIANT* pVal);
+};
+
+[
+	uuid(C95BA0A6-DEC2-44D5-808E-72B55F818206),
+	version(1.0),
+	helpstring("QWPCQNG 1.0 Type Library")
+]
+library QWPCQNGLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(695C3DAA-4ADE-4AA7-90AA-53521E6DF42E),
+		helpstring("_IPCQNGEvents Interface")
+	]
+	dispinterface _IPCQNGEvents
+	{
+		properties:
+		methods:
+	};
+	[
+		uuid(59DA5E62-69A4-4505-A9D0-CAEE53C49E07),
+		helpstring("ComScire PCQNG Control 2.0")
+	]
+	coclass PCQNG
+	{
+		[default] interface IPCQNG;
+		[default, source] dispinterface _IPCQNGEvents;
+	};
+};

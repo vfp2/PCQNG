@@ -1,0 +1,71 @@
+<script language="JavaScript">
+function PrettyEmail(email)
+{
+	email = email.toLowerCase();
+	var tempemail = "";
+	for (i=0; i<email.length; i++)
+	{
+		if (email.charAt(i) != ' ')
+			tempemail += email.charAt(i);
+	}
+	
+	return tempemail;
+}
+
+function LicGen(email)
+{
+	var PCQNGCode = 1;
+	email = PrettyEmail(email);
+	for (i=0; i<email.length; i++)
+	{
+		PCQNGCode *= email.charCodeAt(i);
+		PCQNGCode %= 99999989;
+	}
+	
+	PCQNGCode += 13117532;
+	PCQNGCode %= 99999989;
+			
+	return PCQNGCode;
+}
+
+function VersionStrip(version)
+{
+	version *= 10;
+	return Math.floor(version);
+}
+
+function RunIt(Version, Email, Quantity)
+{
+	T3.value = PrettyEmail(Email);
+	tv = LicGen(Email);
+	tv = tv.toString();
+	while (tv.length<8)
+		tv = "0" + tv;
+	q = Quantity.toString();
+	while (q.length<4)
+		q = "0" + q;
+	v = VersionStrip(Version).toString();
+	while (v.length<2)
+		v = "0" + v;
+	T4.value = "PCQNG-" + v + "-" + tv + "-" + q;
+}
+</script>
+
+<html>
+
+<body>
+
+  PCQNG Version:&nbsp; <input type="text" name="T1" size="6"> (i.e. 2.0)<br>
+  Quantity License <input type="text" name="T5" size="6"> (typically 1 - single 
+  machine license)<br>
+  Licensee Email: <input type="text" name="T2" size="30"><br>
+  <br>
+  <input type="button" value="Create PCQNG License" name="B1" onclick="javascript:RunIt(T1.value, T2.value, T5.value)"></p>
+  <p>&nbsp;</p>
+  <p><b><font size="4">PCQNG License:</font></b></p>
+  <p><b>Licensee: <input type="text" name="T3" size="32"><br>
+  Product Key: <input type="text" name="T4" size="32"></b></p>
+
+</body>
+
+</html>

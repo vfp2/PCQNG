@@ -1,0 +1,17 @@
+[OPTIONS]
+Binary Index=No
+Compatibility=1.1 or later
+Compiled file=PCQNGHelp.chm
+Contents file=PCQNGHelp.hhc
+Default topic=HTML\Home.htm
+Display compile progress=Yes
+Full-text search=Yes
+Language=0x409 English (United States)
+Title=PCQNG Manual
+
+
+[FILES]
+HTML\Home.htm
+
+[INFOTYPES]
+

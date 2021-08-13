@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+	<param name="ImageType" value="Folder">
+</OBJECT>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="PCQNG 2.0 Home">
+		<param name="Local" value="HTML\Home.htm">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Functional Description">
+			<param name="Local" value="HTML\FuncDesc.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Entropy Calculation">
+			<param name="Local" value="HTML\HCalc.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Frequently Asked Questions">
+			<param name="Local" value="HTML\FAQ.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Licensing">
+			<param name="Local" value="HTML\Licensing.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="End-User License Agreement">
+			<param name="Local" value="HTML\EULA.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Support">
+			<param name="Local" value="HTML\Support.htm">
+			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="User Applications">
+		<param name="Local" value="HTML\Apps.htm">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="RNGmeter 0.9">
+			<param name="Local" value="HTML\RNGmeter.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="PCQNGFile 1.0">
+			<param name="Local" value="HTML\PCQNGFile.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="PCQNGPick 1.0">
+			<param name="Local" value="HTML\PCQNGPick.htm">
+			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="SDK Documentation">
+		<param name="Local" value="HTML\SDKDoc.htm">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Basic Examples">
+			<param name="Local" value="HTML\BasicExamples.htm">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="VC++ 6.0">
+				<param name="Local" value="HTML\VC6BaseEx.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Console (VC++ 7.0)">
+				<param name="Local" value="HTML\ConsoleBaseEx.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="VB 7.0 and VC# 7.0">
+				<param name="Local" value="HTML\VCS7BaseEx.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="JScript WSH">
+				<param name="Local" value="HTML\JSBaseEx.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="VBScript WSH">
+				<param name="Local" value="HTML\VBSBaseEx.htm">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Reference">
+			<param name="Local" value="HTML\Reference.htm">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Methods">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Open">
+					<param name="Local" value="HTML\OpenMethod.htm">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Close">
+					<param name="Local" value="HTML\CloseMethod.htm">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Clear">
+					<param name="Local" value="HTML\ClearMethod.htm">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Reset">
+					<param name="Local" value="HTML\ResetMethod.htm">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="SetMode">
+					<param name="Local" value="HTML\SetMode.htm">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="GetMode">
+					<param name="Local" value="HTML\GetMode.htm">
+					</OBJECT>
+			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Properties">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="RandInt32">
+					<param name="Local" value="HTML\RandInt32Prop.htm">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="RandUniform">
+					<param name="Local" value="HTML\RandUniformProp.htm">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="RandNormal">
+					<param name="Local" value="HTML\RandNormalProp.htm">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="RandBytes">
+					<param name="Local" value="HTML\RandBytesProp.htm">
+					</OBJECT>
+			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Miscellaneous">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Error Handling">
+					<param name="Local" value="HTML\ErrHandle.htm">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Return Values">
+					<param name="Local" value="HTML\RetVals.htm">
+					</OBJECT>
+			</UL>
+		</UL>
+	</UL>
+</UL>
+</BODY></HTML>

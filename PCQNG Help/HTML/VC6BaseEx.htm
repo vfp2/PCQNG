@@ -1,0 +1,131 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Visual C++ 6.0 Basic Example</title>
+</head>
+
+<body>
+
+<font size="4">
+<table border="1" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1" cellpadding="4" bgcolor="#E1E1E1">
+  <tr>
+    <td width="100%">
+
+<font size="5"><b>Visual C++ 6.0 Basic Example</b></font></td>
+  </tr>
+</table>
+</font>
+<p align="left"><b>This example shows how  to use the PCQNG ActiveX interface 
+to get random 32-bit integers, uniform numbers [0,1), and normally distributed 
+numbers using the ComScire PCQNG True Random Number Generator.</b></p>
+<p align="left">Click on <b><font size="4">
+<a target="_blank" href="VC6BasicExShots/VCBasExShot1.png">
+<img border="0" src="ScreenShot.gif" alt="ScreenShot" align="middle" width="34" height="34"></a></font></b> 
+for a screen shot of each step.<br>
+<b><font size="4">Step 1 · Create a new MFC Dialog based project
+<a target="_blank" href="VC6BasicExShots/VCBasExShot1.png">
+<img border="0" src="ScreenShot.gif" alt="ScreenShot" width="34" height="34"></a></font></b><br>
+· Start a new Visual C++ project. Select &quot;MFC AppWizard (.exe)&quot; as the project 
+type. Name the project and click OK.<br>
+· Select a Dialog based project. Click Next to continue.<br>
+· Confirm that ActiveX Control support is checked. Click Finish to create the 
+new project.</p>
+<p align="left"><b><font size="4">Step 2 · Insert the PCQNG ActiveX control
+<a target="_blank" href="VC6BasicExShots/VCBasExShot2.png">
+<img border="0" src="ScreenShot.gif" alt="ScreenShot" width="34" height="34"></a></font></b><br>
+· Right click on the new dialog that the project wizard created. Select &quot;Insert 
+ActiveX Control...&quot;.<br>
+· Choose &quot;ComScire PCQNG Control 2.0&quot;&nbsp; from the popup menu. If this item does 
+not appear in the ActiveX control list, the PCQNG device was not properly 
+installed.<br>
+· Verify that the ComScire PCQNG icon appears as above. If the PCQNG icon 
+appears, the control is now available to the MFC dialog.</p>
+<p align="left"><b><font size="4">Step 3 · Add radio buttons for data type 
+selection <a target="_blank" href="VC6BasicExShots/VCBasExShot3.png">
+<img border="0" src="ScreenShot.gif" alt="ScreenShot" width="34" height="34"></a></font></b><br>
+· Delete the default text on the dialog and add three radio buttons.<br>
+· Right click on each of the radio buttons and select &quot;Properties&quot; to change 
+their ID's and captions. Change the first radio button caption to &quot;Uniform&quot; and 
+the ID to &quot;IDC_UNIFORM&quot;. For this first (and only the first) radio button check 
+the &quot;Group&quot; box. Change the second radio button caption to &quot;Normal&quot; and ID to &quot;IDC_NORMAL&quot;. 
+Change the last radio button caption to &quot;Int32&quot; and ID to &quot;IDC_INT32&quot;.<br>
+· Add a group box around the radio buttons.<br>
+· Right click of the group box and open up its property dialog.&nbsp; Change its 
+caption to &quot;Type&quot;.</p>
+<p align="left"><b><font size="4">Step 4 · Add text fields for output
+<a target="_blank" href="VC6BasicExShots/VCBasExShot4.png">
+<img border="0" src="ScreenShot.gif" alt="ScreenShot" width="34" height="34"></a></font></b><br>
+· Add two static text fields to the dialog.<br>
+· Right click on the text fields and select &quot;Properties&quot; to change their ID's 
+and captions. Change the first text field caption to &quot;Random Number:&quot; and do not 
+change its ID. Leave the second text field caption as is, but change its ID to &quot;IDC_VALUE&quot;.<br>
+· Resize the text field with ID &quot;IDC_VALUE&quot; so that it is slightly larger than 
+the &quot;Random Number:&quot; text field.</p>
+<p align="left"><b><font size="4">Step 5 · Add variables to dialog items
+<a target="_blank" href="VC6BasicExShots/VCBasExShot5.png">
+<img border="0" src="ScreenShot.gif" alt="ScreenShot" width="34" height="34"></a></font></b><br>
+· Right click on the dialog and select &quot;Class Wizard&quot; from the popup menu.<br>
+· Click the &quot;Member Variables&quot; Tab. Select &quot;IDC_VALUE&quot; and Click &quot;Add Variable&quot;.<br>
+· In the Add Member Variable dialog, type &quot;m_sValue&quot; in the <i>Member variable 
+name</i> box, make sure that the <i>Category</i> is &quot;Value&quot; and the <i>Variable</i> 
+type is &quot;CString&quot;. Click OK.<br>
+· In Class Wizard, select &quot;IDC_UNIFORM&quot; and click &quot;Add Variable&quot; again. Set the
+<i>Member variable name</i> to &quot;m_iSelection&quot;, the <i>Category</i> to &quot;Value&quot;, 
+and the <i>Variable type</i> to &quot;int&quot;. Click OK.<br>
+· Select &quot;IDC_PCQNG1&quot; from the list and click &quot;Add Variable&quot; again. Click OK on 
+the message box that appears.<br>
+· Click OK on the Confirm Classes dialog that appears. Do not change anything on 
+this dialog.<br>
+· The Add Member Variable dialog will now appear. Set the <i>Member variable 
+name </i>to &quot;m_xPCQNG&quot;, the <i>Category</i> to &quot;Control&quot;, and the <i>Variable 
+type</i> to &quot;CPCQNG&quot;. Click OK to exit the Add Member Variable dialog.<br>
+· Click OK on the MFC Class Wizard dialog to record the changes.</p>
+<p align="left"><b><font size="4">Step 6 · Add code to the OK button
+<a target="_blank" href="VC6BasicExShots/VCBasExShot6.png">
+<img border="0" src="ScreenShot.gif" alt="ScreenShot" width="34" height="34"></a></font></b><br>
+· Double click the OK button on the PCQNG Basic Example dialog. When the Add 
+Member Function box pops up, click OK to accept the default function name.<br>
+· Delete the default code that was generated&nbsp; for this function and add the 
+following lines. (note: if you named your project differently, the first line 
+will be different, but it will be generated automatically.</p>
+<p align="left"><font face="Courier New" size="2">void CVC6BasExDlg::OnOK()<br>
+{<br>
+&nbsp;&nbsp;&nbsp; UpdateData(true); <font color="#008000">//stores state of radio buttons</font><br>
+<br>
+&nbsp;&nbsp;&nbsp; m_xPCNQG.Open(); <font color="#008000">// open PCQNG</font><br>
+<br>
+&nbsp;&nbsp;&nbsp; if (m_iSelection==0) <font color="#008000">//uniform numbers selected</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; m_sValue.Format(&quot;%.6f&quot;,m_xPCQNG.GetRandUniform());<br>
+<br>
+&nbsp;&nbsp;&nbsp; if (m_iSelection==1) <font color="#008000">//normally distributed number 
+selected</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; m_sValue.Format(&quot;%.6f&quot;,m_xPCQNG.GetRandNormal());<br>
+<br>
+&nbsp;&nbsp;&nbsp; if (m_iSelection==2) <font color="#008000">//unsigned 32-bit integer 
+selected</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; m_sValue.Format(&quot;%u&quot;,m_xPCQNG.GetRandInt32());<br>
+<br>
+&nbsp;&nbsp;&nbsp; m_xPCQNG.Close(); <font color="#008000">// close PCQNG</font><br>
+<br>
+&nbsp;&nbsp;&nbsp; UpdateData(false); <font color="#008000">// refreshes displayed value</font><br>
+}</font></p>
+<p align="left" style="margin-left: 2"><b><font size="4">Step 7 · </font></b><font size="4"><b>Compile 
+and run </b></font><b><font size="4">
+<a target="_blank" href="VC6BasicExShots/VCBasExShot7.png">
+<img border="0" src="ScreenShot.gif" alt="ScreenShot" width="34" height="34"></a></font></b><br>
+· Click on Build-&gt;Execute to compile and execute the program. If the compiler 
+finds errors, check to make sure the code appears exactly as shown in step 6.<br>
+· Select the type of random number you wish to generate and press OK to generate 
+a new random number. Pressing CANCEL will exit the program.<br>
+&nbsp;</p>
+<p align="left"><a href="Example%20Projects/VC6BasEx.zip">Click here for 
+complete code to this demo project (.zip)</a></p>
+<p align="left" style="margin-left: 2">&nbsp;</p>
+
+</body>
+
+</html>

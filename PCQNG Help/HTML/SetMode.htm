@@ -1,0 +1,98 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SetMode Method</title>
+</head>
+
+<body>
+
+<table border="1" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber2" cellpadding="4" bgcolor="#E1E1E1">
+  <tr>
+    <td width="100%"><font size="5"><b>SetMode(Mode)</b></font></td>
+  </tr>
+</table>
+
+<p align="left"><b>Parameter:</b><br>
+Mode: Bit rate multiplier or special mode (see below) as a FLOAT (VT_R4).</p>
+<p align="left"><b>Return Value:<br>
+</b>VOID</p>
+<p align="left"><b>C++ Declaration:</b><br>
+HRESULT SetMode([in] FLOAT Mode)</p>
+<p align="left"><b>Remarks:<br>
+</b>SetMode() is a COM method. SetMode() is normally used to set the bit rate 
+multiplier for the PCQNG device. The base bit rate is 1000 bps and the default 
+mode is 1. To get a bit rate of 2000 bps, set the mode to 2 (i.e. 2 x 1000 bps). 
+To get a bit rate of 500 bps, set the mode to 0.5 (i.e. 0.5 x 1000 bps). The 
+following is a table of valid normal modes:</p>
+<table border="1" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber1" cellpadding="3">
+  <tr>
+    <td align="center">Mode</td>
+    <td align="center">Bit Rate</td>
+    <td align="center">Comments</td>
+  </tr>
+  <tr>
+    <td align="center">.125</td>
+    <td align="center">125 bps</td>
+    <td align="center" rowspan="3">Decreasing mode multipliers provide<br>
+    increasingly conservative true entropy<br>
+    bits H = 1.0 (modes 0.5 and less).</td>
+  </tr>
+  <tr>
+    <td align="center">.25</td>
+    <td align="center">250 bps</td>
+  </tr>
+  <tr>
+    <td align="center">.5</td>
+    <td align="center">500 bps</td>
+  </tr>
+  <tr>
+    <td align="center">1</td>
+    <td align="center">1000 bps</td>
+    <td align="center">Default, true entropy H = 1.0 per bit</td>
+  </tr>
+  <tr>
+    <td align="center">2</td>
+    <td align="center">2000 bps</td>
+	<td align="center">True entropy H = 1.0 per bit</td>
+  </tr>
+  <tr>
+    <td align="center">4</td>
+    <td align="center">4000 bps</td>
+    <td align="center" rowspan="4">True entropy may be less than 1.0 per<br>
+    bit and decreases for increasing mode<br>
+    multipliers (modes 4 and greater). The<br>
+    entropy stirring function ensures that the<br>
+    statistical properties remain virtually perfect.</td>
+  </tr>
+  <tr>
+    <td align="center">8</td>
+    <td align="center">8000 bps</td>
+  </tr>
+  <tr>
+    <td align="center">16</td>
+    <td align="center">16000 bps</td>
+  </tr>
+  <tr>
+    <td align="center">32</td>
+    <td align="center">32000 bps</td>
+  </tr>
+</table>
+<p><br>
+Special modes that may be set with SetMode():</p>
+<p>DMMI mode = -1<br>
+Minimal processing of raw bits for DMMI processing at a bit rate of 1000 bps. 
+Statistical randomness is not guaranteed in this mode.</p>
+<p>Raw bit mode = 0<br>
+Raw bits - no processing. Before entropy extraction and statistical correction. 
+The raw bit rate is 8000 bps. Statistical randomness is not expected in this 
+mode.</p>
+
+<p>&nbsp;</p>
+
+</body>
+
+</html>

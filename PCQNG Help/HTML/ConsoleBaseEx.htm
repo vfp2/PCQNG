@@ -1,0 +1,127 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Console (VC++ 7.0) Basic Example</title>
+</head>
+
+<body>
+
+<font size="4">
+<table border="1" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1" cellpadding="4" bgcolor="#E1E1E1">
+  <tr>
+    <td width="100%">
+
+<font size="5"><b>Console (VC++ 7.0) Basic Example</b></font></td>
+  </tr>
+</table>
+</font>
+<p align="left"><b>This example shows how  to use the PCQNG ActiveX interface 
+to get random 32-bit integers, uniform numbers [0,1), and normally distributed 
+numbers using the ComScire PCQNG True Random Number Generator. </b></p>
+<p align="left">Click on <b><font size="4">
+<a target="_blank" href="ConsoleBasicShots/ConsoleBasicShot1.png">
+<img border="0" src="ScreenShot.gif" alt="ScreenShot" align="middle" width="34" height="34"></a></font></b> 
+for a screen shot of each step.<br>
+<b><font size="4">Step 1 · Create a new Console Application
+<a target="_blank" href="ConsoleBasicShots/ConsoleBasicShot1.png">
+<img border="0" src="ScreenShot.gif" alt="ScreenShot" width="34" height="34"></a></font></b><br>
+· Start a new Visual C++ project. Select &quot;Win32 Project&quot; as the template. 
+Name the project and click OK.<br>
+· In the Win32 Application Wizard click on &quot;Application Settings&quot; on the side 
+bar, then select &quot;Console Application&quot; as the Application Type and click on 
+&quot;Finish&quot;.</p>
+<p align="left">
+<b><font size="4">Step 2 · Create access to PCQNG ActiveX control
+<a target="_blank" href="ConsoleBasicShots/ConsoleBasicShot2.png">
+<img border="0" src="ScreenShot.gif" alt="ScreenShot" width="34" height="34"></a></font></b><br>
+· Open Class View (from the main menu click on &quot;View&quot;, then select &quot;Class 
+View&quot;).<br>
+· In Class View, click on the boxed plus next to your project name to expand 
+Class View.<br>
+· Expand Global Functions and Variables and double click on &quot;_tmain(int argc, _TCHAR* 
+argv[])&quot;. This will open the console code.<br>
+· Add an &quot;#import&quot; line to the QWPCQNG.dll just below the &quot;#include&quot; statements 
+(note: the path to QWPCQNG.dll might differ in your configuration):</p>
+<table style="border-collapse: collapse" borderColor="#111111" cellSpacing="0" cellPadding="8" bgColor="#ffffff" border="0">
+  <tr>
+    <td width="100%"><font face="Courier New" SIZE="2" COLOR="#0000ff">#include</font><font face="Courier New" SIZE="2"> 
+    &quot;stdafx.h&quot;<br>
+<br>
+</font><font face="Courier New" SIZE="2" COLOR="#008000">// #import directive 
+    using full path to &quot;QWPCQNG.dll&quot;<br>
+    // &quot;no_namespace&quot; avoids the need to use namespace &quot;QWPCQNG&quot;<br>
+</font><font face="Courier New" SIZE="2" COLOR="#0000ff">#import</font><font face="Courier New" SIZE="2"> 
+    &quot;C:\WINDOWS\system32\QWPCQNG.dll&quot; no_namespace named_guids<br>
+<br>
+</font><font face="Courier New" SIZE="2" COLOR="#0000ff">int</font><font face="Courier New"><font SIZE="2"> 
+    _tmain(</font><font SIZE="2" COLOR="#0000ff">int</font></font><font SIZE="2"><font face="Courier New"> 
+    argc, _TCHAR* argv[])<br>
+    {<br>
+&nbsp;
+</font> </font>
+<font SIZE="2" COLOR="#0000ff" face="Courier New">return</font><font face="Courier New" SIZE="2"> 
+    0;<br>
+    }</font></td>
+  </tr>
+</table>
+<b><font size="4">Step 3 · Add code to access and display PCQNG 
+data <a target="_blank" href="ConsoleBasicShots/ConsoleBasicShot3.png">
+<img border="0" src="ScreenShot.gif" alt="ScreenShot" width="34" height="34"></a></font></b><br>
+· Add code to _tmain as follows:<br>
+&nbsp;<table style="border-collapse: collapse" borderColor="#111111" cellSpacing="0" cellPadding="8" bgColor="#ffffff" border="0">
+  <tr>
+    <td width="100%"><font SIZE="2" COLOR="#0000ff"><font face="Courier New">int</font></font><font face="Courier New"><font SIZE="2"> 
+    _tmain(</font><font SIZE="2" COLOR="#0000ff">int</font></font><font SIZE="2"><font face="Courier New"> 
+    argc, _TCHAR* argv[])<br>
+    {<br>
+&nbsp; </font></font><font SIZE="2" COLOR="#008000" face="Courier New">// 
+    Declare a smart pointer to PCQNG control<br>
+&nbsp; </font><font SIZE="2"><font face="Courier New">IPCQNGPtr pPCQNG = 0;</font><p>
+    </font><font SIZE="2" COLOR="#008000" face="Courier New">&nbsp; // Create 
+    instance of PCQNG control<br>
+&nbsp; </font><font face="Courier New" SIZE="2">CoInitialize(NULL);<br>
+&nbsp; pPCQNG.CreateInstance(CLSID_PCQNG);<br>
+    <br>
+&nbsp; pPCQNG-&gt;Open(); </font><font SIZE="2" COLOR="#008000">
+    <font face="Courier New">// Open PCQNG<br>
+    <br>
+&nbsp; </font></font><font face="Courier New" size="2" color="#008000">// Get 
+    and print a uniform, normal, and 32 bit integer<br>
+&nbsp; </font><font face="Courier New" SIZE="2">cout &lt;&lt; &quot;Uniform: &quot; &lt;&lt; pPCQNG-&gt;RandUniform 
+    &lt;&lt; endl;<br>
+&nbsp; cout &lt;&lt; &quot;Normal: &quot; &lt;&lt; pPCQNG-&gt;RandNormal &lt;&lt; endl;<br>
+&nbsp; cout &lt;&lt; &quot;Int32: &quot; &lt;&lt; pPCQNG-&gt;RandInt32 &lt;&lt; endl &lt;&lt; endl;<br>
+    <br>
+&nbsp; pPCQNG-&gt;Close(); </font><font SIZE="2" COLOR="#008000">
+    <font face="Courier New">// Close PCQNG<br>
+    <br>
+&nbsp; </font></font><font SIZE="2" COLOR="#008000" face="Courier New">// Wait 
+    for a keypress<br>
+&nbsp; </font><font SIZE="2"><font face="Courier New">cout &lt;&lt; &quot;A Key to Quit&quot; &lt;&lt; 
+    endl;<br>
+&nbsp; </font></font><font SIZE="2" COLOR="#0000ff" face="Courier New">while</font><font SIZE="2"><font face="Courier New"> 
+    (!kbhit());<br>
+    <br>
+&nbsp; </font></font><font SIZE="2" COLOR="#0000ff" face="Courier New">return</font><font SIZE="2"><font face="Courier New"> 
+    0;<br>
+    }</font></font></td>
+  </tr>
+</table>
+<b><font size="4">Step 4 · </font></b><font size="4"><b>
+Compile and run </b></font><b><font size="4">
+<a target="_blank" href="ConsoleBasicShots/ConsoleBasicShot4.png">
+<img border="0" src="ScreenShot.gif" alt="ScreenShot" width="34" height="34"></a></font></b><br>
+· Click on the Debug menu and select &quot;Start Without Debugging&quot; to run the 
+application. If the compiler finds errors, check to make sure the code appears 
+exactly as shown in step 3. <br>
+&nbsp;<p align="left"><a href="Example%20Projects/ConsoleBasEx.zip">Click here 
+for complete code to this demo project (.zip)</a></p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

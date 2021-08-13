@@ -1,0 +1,96 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>PCQNG ActiveX Referenece</title>
+</head>
+
+<body>
+
+<font size="4">
+<table border="1" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1" cellpadding="4" bgcolor="#E1E1E1">
+  <tr>
+    <td width="100%">
+
+<font size="5"><b>PCQNG ActiveX Reference</b></font></td>
+  </tr>
+</table>
+</font>
+<p align="left"><b>The PCQNG is accessed using an ActiveX control which has six 
+methods to control the PCQNG device and four properties to access the random 
+data.</b></p>
+<p align="left"><b>Programming Notes:<br>
+</b>Call the <a href="OpenMethod.htm">Open() method</a> before making any other 
+calls to the PCQNG control. Open() will attempt to acquire the resources 
+necessary for running the PCQNG. The Open() call may return a
+<a href="RetVals.htm">PCQNG_E_DEVICE_UNAVAILABLE</a> exception, if the PCQNG is 
+being used by another program on the same machine. Only a single instance of 
+PCQNG may be running on a single machine at a time. If another call is made 
+before Open() is called, a <a href="RetVals.htm">PCQNG_E_DEVICE_NOT_OPEN</a> 
+exception will be thrown. Please call the <a href="CloseMethod.htm">Close() 
+method</a> to release the PCQNG to the system after the PCQNG is no longer 
+needed by your program. This allows other Programs to gain access to the PCQNG 
+resource.<b><br>
+<br>
+</b>The PCQNG provides custom <a href="RetVals.htm">HRESULT codes</a> on every 
+method or property call. HRESULT codes provide exception/error detail. See
+<a href="ErrHandle.htm">Error Handling</a> on catching the HRESULT codes.</p>
+<p align="left">During a programming session, a programming environment 
+typically sets the Ambient Properties for an ActiveX control to design mode. In 
+design mode the control will return default values for
+<a href="RandInt32Prop.htm">RandInt32</a> (123456789),
+<a href="RandUniformProp.htm">RandUniform</a> (0.123456789),
+<a href="RandNormalProp.htm">RandNormal</a> (1.23456789) and
+<a href="RandBytesProp.htm">RandBytes</a> (1234567890123...). If the PCQNG 
+control returns these values at run-time, please make sure the User Mode 
+Ambient Property is set to TRUE at run-time. This should normally not be an 
+issue, however.</p>
+<p align="left"><b>PCQNG 2.0 ActiveX Control Details<br>
+</b>The following table contains the interface details needed to access the 
+PCQNG control:</p>
+<table border="1" cellpadding="2" cellspacing="0" style="border-collapse: collapse" bordercolor="#C0C0C0">
+  <tr>
+    <td nowrap><b>Class </b></td>
+    <td nowrap>QWPCQNG.PCQNG</td>
+  </tr>
+  <tr>
+    <td nowrap><b>Version</b></td>
+    <td nowrap>2.0</td>
+  </tr>
+  <tr>
+    <td nowrap><b>ProgID</b></td>
+    <td nowrap>QWPCQNG.PCQNG</td>
+  </tr>
+  <tr>
+    <td nowrap><b>Versioned ProgID</b></td>
+    <td nowrap>QWPCQNG.PCQNG.2</td>
+  </tr>
+  <tr>
+    <td nowrap><b>Type Library</b></td>
+    <td nowrap>PCQNG.dll</td>
+  </tr>
+  <tr>
+    <td nowrap>&nbsp;</td>
+    <td nowrap>&nbsp;</td>
+  </tr>
+  <tr>
+    <td nowrap><b>Class ID (CLSID)</b></td>
+    <td nowrap>59DA5E62-69A4-4505-A9D0-CAEE53C49E07</td>
+  </tr>
+  <tr>
+    <td nowrap><b>IPCQNG Interface (IID)&nbsp;&nbsp;&nbsp; </b></td>
+    <td nowrap>C59FF083-E24E-4ACE-A04A-CA51BE626DFE</td>
+  </tr>
+  <tr>
+    <td nowrap><b>Library ID (LIBID)</b></td>
+    <td nowrap>C95BA0A6-DEC2-44D5-808E-72B55F818206</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

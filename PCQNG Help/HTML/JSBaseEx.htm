@@ -1,0 +1,65 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>JScript Basic Example</title>
+</head>
+
+<body>
+
+<font size="4">
+<table border="1" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1" cellpadding="4" bgcolor="#E1E1E1">
+  <tr>
+    <td width="100%">
+
+<font size="5"><b>JScript WSH Basic Example</b></font></td>
+  </tr>
+</table>
+</font>
+<p align="left"><b>This example shows how  to use the PCQNG ActiveX interface 
+to get random 32-bit integers, uniform numbers [0,1), and normally distributed 
+numbers using the ComScire PCQNG True Random Number Generator.</b></p>
+<p align="left">Click on <b><font size="4">
+<a target="_blank" href="ScriptBasicShots/JSBasEx1.png">
+<img border="0" src="ScreenShot.gif" alt="ScreenShot" align="middle" width="34" height="34"></a></font></b> 
+for a screen shot of each step.<br>
+<b><font size="4">Step 1 · Create the script
+<a target="_blank" href="ScriptBasicShots/JSBasEx1.png">
+<img border="0" src="ScreenShot.gif" alt="ScreenShot" width="34" height="34"></a></font></b><br>
+· Open &quot;Notepad&quot; and enter the following code:</p>
+<p align="left"><font size="2" face="Courier New">// Load PCQNG control<br>
+var xPCQNG = new ActiveXObject(&quot;QWPCQNG.PCQNG&quot;);<br>
+<br>
+// Open the PCQNG<br>
+xPCQNG.Open();<br>
+<br>
+// Get random numbers<br>
+var Int32 = xPCQNG.RandInt32;<br>
+var Uniform = xPCQNG.RandUniform;<br>
+var Normal = xPCQNG.RandNormal;<br>
+<br>
+// Show results in popup<br>
+WScript.Echo('Int32: ' + Int32.toString() + '\n' +<br>
+'Uniform: ' + Uniform.toString() + '\n' +<br>
+'Normal: ' + Normal.toString());<br>
+<br>
+// Close PCQNG<br>
+xPCQNG.Close();</font></p>
+<p align="left"><b><font size="4">Step 2 · Save and run
+<a target="_blank" href="ScriptBasicShots/JSBasEx2.png">
+<img border="0" src="ScreenShot.gif" alt="ScreenShot" width="34" height="34"></a></font></b><br>
+· Save this as &quot;JSExample.js&quot; to your Desktop. Make sure you set the &quot;Save as 
+type&quot; to &quot;All Files&quot;.<br>
+· Find and&nbsp; double-click on &quot;JSExample&quot; on your Desktop. This will run the 
+script.<br>
+&nbsp;</p>
+<p align="left"><a href="Example%20Projects/JSExample.js">Click here for 
+complete code to this demo project (.js)</a></p>
+<p align="left">&nbsp;</p>
+
+</body>
+
+</html>

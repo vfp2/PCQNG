@@ -1,0 +1,207 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "winres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""winres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "1 TYPELIB ""QWPCQNG.tlb""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,2,1
+ PRODUCTVERSION 2,0,2,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName", "ComScire - Quantum World Corporation"
+            VALUE "FileDescription", "ComScire PCQNG Control 2.0"
+            VALUE "FileVersion", "1.0.2.1"
+            VALUE "InternalName", "QWPCQNG.dll"
+            VALUE "LegalCopyright", "Copyright (c) 2001-2003 The Quantum World Corporation. All Rights Reserved."
+            VALUE "LegalTrademarks", "ComScire is a registered trademark of The Quantum World Corporation. All other trademarks used herein are the property of their respective owners."
+            VALUE "OriginalFilename", "QWPCQNG.dll"
+            VALUE "ProductName", "ComScire PCQNG 2.0"
+            VALUE "ProductVersion", "2.0.2.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+IDR_QWPCQNG             REGISTRY                "QWPCQNG.rgs"
+IDR_PCQNG               REGISTRY                "PCQNG.rgs"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_PCQNG               ICON                    "PCQNG.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_CDLGTHANKS DIALOGEX 0, 0, 323, 142
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "PCQNG 2.0 Licensing"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    PUSHBUTTON      "Activate License",IDACTIVATE,12,88,80,16
+    PUSHBUTTON      "Cancel",IDCANCEL,12,115,80,16
+    LTEXT           "Select a PCQNG 2.0 licensing option:",IDC_STATIC,7,12,
+                    119,8
+    ICON            IDI_PCQNG,IDC_STATIC,288,5,20,20
+    DEFPUSHBUTTON   "Continue Free Trial",IDCONTINUETRIAL,12,34,80,16
+    PUSHBUTTON      "Buy A License Now",IDBUY,12,61,80,16
+    GROUPBOX        "",IDC_STATIC,7,27,309,26
+    GROUPBOX        "",IDC_STATIC,7,54,309,26
+    GROUPBOX        "",IDC_STATIC,7,81,309,26
+    GROUPBOX        "",IDC_STATIC,7,108,309,26
+    LTEXT           "You have 14 days left on your free trial.",
+                    IDC_CHANGE_TEXT,99,37,205,8
+    LTEXT           "Purchase a license at www.ComScire.com/Products/.",
+                    IDC_STATIC,99,64,173,8
+    LTEXT           "Activate a purchased license. Have your User ID and Product Key ready.",
+                    IDC_STATIC,99,88,210,17
+    LTEXT           "Cancel dialog. Do not run the PCQNG 2.0.",IDC_STATIC,99,
+                    118,160,8
+END
+
+IDD_DLGACTIVATE DIALOGEX 0, 0, 180, 85
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "PCQNG 2.0 License Activation"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Activate",IDOK,69,64,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,123,64,50,14
+    LTEXT           "Enter licensing information below and click Activate.",
+                    IDC_STATIC,7,7,166,8
+    LTEXT           "User ID:",IDC_STATIC,21,26,28,8
+    LTEXT           "Product Key:",IDC_STATIC,7,43,42,8
+    EDITTEXT        IDC_USER_ID,52,24,119,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PRODUCT_KEY,52,42,119,12,ES_AUTOHSCROLL
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_CDLGTHANKS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 316
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 135
+    END
+
+    IDD_DLGACTIVATE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 173
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 78
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_PROJNAME            "QWPCQNG"
+    IDS_COPYRIGHT           "Copyright (c) 2001-2003 The Quantum World Corporation. All rights reserved."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1 TYPELIB "QWPCQNG.tlb"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

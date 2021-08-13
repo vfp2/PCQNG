@@ -1,0 +1,393 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Language" content="en-us">
+		<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+		<meta name="ProgId" content="FrontPage.Editor.Document">
+		<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<title>Functional Description</title>
+	</head>
+	<body>
+		<table border="1" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1" cellpadding="4" bgcolor="#E1E1E1">
+			<tr>
+				<td width="100%"><b>
+                <font size="5"><b>RNGmeter 0.9 (PCQNG 2.0 Edition)</b></font></td>
+			</tr>
+		</table>
+		<table>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>
+					<p class="MsoNormal" style="text-autospace: none">
+                    <b><font size="2">Note:</font></b><font size="2"> The 
+                    RNGmeter uses the &quot;local loopback&quot; network address. This is 
+                    a network address that stays local on your machine and will 
+                    not access other computers over the internet or a network. 
+                    You may safely configure your firewall to allow this 
+                    application to use local network resources.</font></p>
+					<p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 10.0pt; color: black">The ComScire 
+                    RNGmeter is a continuous statistical tester that uses five 
+                    powerful and fundamentally different tests on the input 
+                    data. This version (0.9) tests files, external TCP bit 
+                    streams as well as the ComScire PCQNG 2.0 true random number 
+                    generator.</span></p>
+                    <p class="MsoNormal" style="text-autospace: none"><i>
+                    <span style="font-size: 10.0pt; color: black">Bit Count</span></i><span style="font-size: 10.0pt; color: black"> 
+                    is the total number of bits tested. <i>Elapsed Time</i> is 
+                    the time from the start of the current test run. <i>
+                    Throughput</i> is the input data rate in bits per second.</span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 10.0pt; color: black">The five tests 
+                    are:</span></p>
+                    <p class="MsoNormal" style="text-autospace: none; margin-left: 28.35pt; margin-right: 28.35pt; margin-top: 0in; margin-bottom: 14.15pt">
+                    <span style="font-size: 10.0pt; color: black">1) 1/0 Balance 
+                    - expected value is p(0) = p(1) = 0.5,</span></p>
+                    <p class="MsoNormal" style="text-autospace: none; margin-left: 28.35pt; margin-right: 28.35pt; margin-top: 0in; margin-bottom: 14.15pt">
+                    <span style="font-size: 10.0pt; color: black">2) Auto 
+                    Correlation - orders 1 up to 32, expected value is standard 
+                    deviation = 0.0 for all orders,</span></p>
+                    <p class="MsoNormal" style="text-autospace: none; margin-left: 28.35pt; margin-right: 28.35pt; margin-top: 0in; margin-bottom: 14.15pt">
+                    <span style="font-size: 10.0pt; color: black">3) Entropy 
+                    Test - expected value is H = 1.0, an update of U. Maurer</span><span style="font-size: 10.0pt; font-family: Thorndale; color: black">’</span><span style="font-size: 10.0pt; color: black">s
+                    </span>
+                    <span style="font-size: 10.0pt; font-family: Thorndale; color: black">
+                    “</span><span style="font-size: 10.0pt; color: black">Universal 
+                    Test</span><span style="font-size: 10.0pt; font-family: Thorndale; color: black">”</span><span style="font-size: 10.0pt; color: black"> 
+                    (J-S Coron, <i>LNCS</i>, Vol. 1560, pp29-42, 1999),</span></p>
+                    <p class="MsoNormal" style="text-autospace: none; margin-left: 28.35pt; margin-right: 28.35pt; margin-top: 0in; margin-bottom: 14.15pt">
+                    <span style="font-size: 10.0pt; color: black">4) Serial Test
+                    </span>
+                    <span style="font-size: 10.0pt; font-family: Thorndale; color: black">
+                    -</span><span style="font-size: 10.0pt; color: black"> 
+                    expected value is standard deviation = 0.0 (Good, I. J, The 
+                    serial test for sampling numbers and other tests for 
+                    randomness, Proc. Camb. Philos. Soc. Vol. 49, 1953)</span></p>
+                    <p class="MsoNormal" style="text-autospace: none; margin-left: 28.35pt; margin-right: 28.35pt; margin-top: 0in; margin-bottom: 14.15pt">
+                    <span style="font-size: 10.0pt; color: black">5) OQSO - 
+                    Overlapping-Quadruples-Sparse-Occupancy test, expected 
+                    values are mean = 141909.47 and standard deviation = 294.63 
+                    (G. Marsaglia and A. Zaman, <i>Computers Math. Applic.</i>, 
+                    Vol. 26, No. 9, pp 1-10, 1993).<br>
+&nbsp;</span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 10.0pt; color: black">Each test uses 
+                    blocks of data of varying lengths, depending on the specific 
+                    test. The 1/0 Balance and Auto Correlation tests use a block 
+                    size of 65536 bits. The Serial test has a block size of 
+                    262144 bits. The Entropy test has 4194304 bits in a block. 
+                    The OQSO test uses 10485775 bits per block.</span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 10.0pt; color: black">The 1/0 
+                    Balance and the Auto Correlation tests have exact binomial 
+                    solutions and are limited only by the binary resolution of 
+                    the computational algorithms used. The Serial test is itself 
+                    a chi-squared test and will asymptotically converge toward 
+                    the expected result as the block length increases. The 
+                    chosen block length for the Serial test will provide 
+                    accurate results for at least 10<sup>12</sup> bits of 
+                    continuous testing. The OQSO and Entropy tests are 
+                    empirically determined to be sufficiently normally 
+                    distributed and should likewise provide indicative results 
+                    for at least 10<sup>12</sup> bits of testing. &nbsp;All tests are 
+                    designed to provide reliable results for at least 10<sup>12</sup> 
+                    bits or more. </span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 10.0pt; color: black">Statistical 
+                    measurements produce probabilistic results with increasing 
+                    accuracy as the bit count increases. As a result, test 
+                    results can fall below or above their actual values. For 
+                    example, it is not uncommon to find an Entropy test 
+                    (measurement) with an H-value above 1.0. Also note that the 
+                    Entropy test was not designed for pseudorandom generators in 
+                    that the test does not measure actual entropy, but 
+                    statistical entropy. A pseudorandom generator may fail the 
+                    Entropy test by producing an H-value well above 1.0, thus 
+                    demonstrating a recognizable generation pattern.</span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 10.0pt; color: black">A z-score is 
+                    calculated for every test for each data-block. The z-scores 
+                    are converted to probabilities with the assumption they are 
+                    normally distributed. The z-scores of the 1/0 Balance, Auto 
+                    Correlation and Serial tests and their associated p-values 
+                    displayed are cumulative for all blocks. The z-scores of the 
+                    Entropy and OQSO tests are combined by summing the z-scores 
+                    of all blocks and dividing by the square root of the number 
+                    of blocks, respectively.</span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 10.0pt; color: black">A second level 
+                    of testing is applied to the p-values calculated from the 
+                    z-scores for each block of data. The z-scores are expected 
+                    to be normally distributed and hence their associated 
+                    p-values are expected to be uniformly distributed. A 
+                    chi-square test is applied to the individual p-values from 
+                    each of the four tests. The chi-square tests are cumulative 
+                    and their results are displayed as probabilities. If these 
+                    chi-square p-values converge to 0.0 or 1.0 for any test, the 
+                    assumption of randomness fails, indicating non-random 
+                    patterns in the data being tested.</span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 10.0pt; color: black">Any test might 
+                    fail the chi-square test even though it passes the 
+                    first-level test. A typical example is a pseudo random 
+                    generator with a </span>
+                    <span style="font-size: 10.0pt; font-family: Thorndale; color: black">
+                    “</span><span style="font-size: 10.0pt; color: black">too 
+                    perfect</span><span style="font-size: 10.0pt; font-family: Thorndale; color: black">”</span><span style="font-size: 10.0pt; color: black"> 
+                    1/0 balance. Note: The chi-square test is an approximation 
+                    that begins to converge only after about 100 individual 
+                    probability values have been accumulated.</span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 10.0pt; color: black">A third level 
+                    of testing is applied to all of the individual chi-squared 
+                    tests. A Kolmogorov-Smirnov (KS) test is first applied to 
+                    the probabilities of chi-squared results of all orders of 
+                    auto correlation being tested to reduce the auto correlation 
+                    results to a single number. A meta KS test is finally 
+                    calculated using the auto correlation KS result and the 
+                    probabilities of the chi-squared results of the remaining 
+                    tests. The meta KS(+) and KS(-) probabilities are displayed. 
+                    Convergence toward 1.0 or 0.0 indicates failure.</span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 10.0pt; color: black">The meter, 
+                    displayed with a scale from 0 to 50, is an attempt to 
+                    quantify the quality of the random number generator being 
+                    tested. The meter value is calculated from the number of 
+                    bits tested before the generator has been determined to have 
+                    failed according to a set of failure rules. If <i>b</i> is 
+                    the number of bits tested before failure, then the meter 
+                    value is given by <i>log<span style="position: relative; top: 4.0pt">2</span></i>(<i>b/4</i>). 
+                    The 1/4 adjustment is included to estimate the length of 
+                    “good” bit sequences available from the generator since the 
+                    data is tested to significant statistical failure.</span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 10.0pt; color: black">If any 
+                    cumulative z-score exceeds </span>
+                    <span style="font-size: 10.0pt; font-family: Thorndale; color: black">
+                    ±</span><span style="font-size: 10.0pt; color: black"> 4.265 
+                    standard deviations the generator will be determined as 
+                    failed. Failure is also pronounced if the probability of any 
+                    chi squared test is less than 0.00001 or greater than 
+                    0.99999, or if the probability of either of the meta KS 
+                    results is less than 0.0001 or greater than 0.9999.</span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 10.0pt; color: black">To accommodate 
+                    the long convergence periods of the chi-squared tests and 
+                    the meta KS test an unfreeze condition is introduced, 
+                    whereby the meter will declare a false failure and resume if 
+                    the probability of the failing test returns to a range 
+                    between 0.01 and 0.99. There is no such recovery mechanism 
+                    for a failure of the cumulative z-score tests, since these 
+                    will have converged on the very first block.</span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 10.0pt; color: black">The meter 
+                    value is immediately followed by a sign (plus or minus) or 
+                    no sign. A plus indicates that the generator has not failed 
+                    and its score is at least what is indicated. A minus sign 
+                    indicates that the generator has failed on the first block 
+                    of a test and its score should be an unknown amount less 
+                    than what is shown. No sign indicates that the meter is in a 
+                    frozen state because the generator has failed according to 
+                    the above rules. If the chi-squared or meta KS tests have 
+                    not yet converged, the meter may unfreeze by continuing the 
+                    test. Otherwise, this score is the final score for the 
+                    testing generator.</span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 10.0pt; color: black">To gain 
+                    confidence in the meter score for a particular generator, 
+                    test the generator multiple times. If testing a pseudo 
+                    random generator, use different seeds for each test.</span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 10.0pt; color: black">To use the 
+                    RNGmeter, press the Start button to begin a new test. The 
+                    Run dialog will appear. First, select the data source. This 
+                    may be a file, a TCP port, or thePCQNG 2.0.</span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 10.0pt; color: black">Binary and 
+                    text file types are accepted and automatically recognized. 
+                    The text file types must consist of 32 bit signed or 
+                    unsigned integers separated by a common delimiter such as 
+                    comma, space, tab, colon, semicolon, slash, vertical line, 
+                    etc. One 32 bit number per line is also recognized. Invalid 
+                    delimiters include all numerals, all alpha characters and 
+                    the plus and minus sign.</span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 10.0pt; color: black">To feed data 
+                    externally through a TCP port, enter the desired port in the 
+                    Run dialog. The default is TCP port 21021. After pressing 
+                    the Run button, an external client program should then 
+                    connect to the port and start sending binary data for 
+                    testing. To avoid TCP congestion, data should be sent in 
+                    blocks no faster than 4 times per second. If the client 
+                    program resides on the same machine as the RNGmeter, use the 
+                    local loopback IP address (127.0.0.1) as the connection IP. 
+                    Data can also be sent over a network or even the Internet to 
+                    the testing platform with the appropriate IP and routing 
+                    information.</span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 10.0pt; color: black">The following 
+                    test program will compile with Visual C++ (VC++). Run 
+                    RNGmeter and start a new test using the default TCP port 
+                    (21021) as the data source. Press the Run button then run 
+                    the following compiled test program on the same machine. It 
+                    will test the VC++ pseudo random number generator.</span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-family: Thorndale; color: black"><br>
+                    </span>
+                    <span style="font-size: 9.0pt; font-family: Courier New; color: blue">
+                    #include</span><span style="font-size: 9.0pt; font-family: Courier New"> 
+                    &quot;winsock.h&quot;<br>
+                    </span>
+                    <span style="font-size: 9.0pt; font-family: Courier New; color: blue">
+                    #include</span><span style="font-size: 9.0pt; font-family: Courier New"> 
+                    &quot;stdlib.h&quot;<br>
+                    </span>
+                    <span style="font-size: 9.0pt; font-family: Courier New; color: blue">
+                    #include</span><span style="font-size: 9.0pt; font-family: Courier New"> 
+                    &quot;time.h&quot;</span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 9.0pt; font-family: Courier New; color: blue">
+                    int</span><span style="font-size: 9.0pt; font-family: Courier New"> 
+                    main()<br>
+                    {<br>
+                    &nbsp;&nbsp; <span style="color: blue">int</span> sockfeed;<br>
+                    &nbsp;&nbsp; <span style="color: blue">struct</span> sockaddr_in 
+                    address;<br>
+                    <br>
+                    &nbsp;&nbsp; <span style="color: green">// Windows needs this to load 
+                    socket dll<br>
+&nbsp;&nbsp; </span>WSADATA wsdata;<br>
+                    &nbsp;&nbsp; WSAStartup(0x22, &amp;wsdata);&nbsp;<br>
+                    <br>
+                    &nbsp;&nbsp; <span style="color: green">// Create socket<br>
+                    </span>&nbsp;&nbsp; sockfeed = (<span style="color: blue">int</span>)socket(AF_INET, 
+                    SOCK_STREAM, 0);<br>
+                    <br>
+                    &nbsp;&nbsp;&nbsp;<span style="color: green">// 127.0.0.1 local loopback 
+                    address<br>
+&nbsp;&nbsp; </span>address.sin_addr.s_addr = inet_addr(&quot;127.0.0.1&quot;);<br>
+&nbsp;&nbsp; address.sin_family = AF_INET;<br>
+&nbsp;&nbsp; </span><span style="color: green; font-size: 9.0pt; font-family: Courier New">
+                    // port: 21021<br>
+&nbsp;&nbsp; </span><span style="font-size: 9.0pt; font-family: Courier New">
+                    address.sin_port = htons(21021);<br>
+                    <br>
+                    &nbsp;&nbsp; <span style="color: green">// Connect to server<br>
+                    </span>&nbsp;&nbsp; <span style="color: blue">if</span> (connect(sockfeed,&nbsp; 
+                    (<span style="color: blue">struct</span> sockaddr*)&amp;address,
+                    <span style="color: blue">sizeof</span>(address))==-1)<br>
+                    &nbsp;&nbsp;&nbsp;<span style="color: blue">return</span> -1;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span style="color: green">// error<br>
+                    <br>
+                    </span>&nbsp;&nbsp; <span style="color: blue">int</span> bitshift = 0;<br>
+                    &nbsp;&nbsp; <span style="color: blue">unsigned</span>
+                    <span style="color: blue">char</span> buffer[960];<br>
+                    &nbsp;&nbsp; <span style="color: blue">unsigned</span>
+                    <span style="color: blue">short</span> temprand;<br>
+                    <br>
+                    &nbsp;&nbsp; <span style="color: green">// Seed the rng with time<br>
+                    </span>&nbsp;&nbsp; srand((<span style="color: blue">unsigned</span>)time(NULL));<br>
+                    <br>
+                    &nbsp;&nbsp; <span style="color: green">/* <br>
+                    </span></span>
+                    <span style="font-size: 9.0pt; font-family: Courier New; color: green">
+                    &nbsp;&nbsp; &nbsp;&nbsp; In VC++ rand() produces a number between 0 and 
+                    RAND_MAX, where<br>
+                    &nbsp;&nbsp; &nbsp;&nbsp; RAND_MAX is 0x7fff, or 15 bits. The following code 
+                    strings<br>
+                    &nbsp;&nbsp; &nbsp;&nbsp; 15 bits from lsb to msb into a buffer, then sends the 
+                    buffer<br>
+                    &nbsp;&nbsp; &nbsp;&nbsp; to the ComScire RNGmeter.<br>
+                    &nbsp;&nbsp; */<br>
+                    <br>
+                    </span>
+                    <span style="font-size: 9.0pt; font-family: Courier New">&nbsp;&nbsp;
+                    <span style="color: blue">while</span> (<span style="color: blue">true</span>)<br>
+                    &nbsp;&nbsp; {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: blue">for</span> (<span style="color: blue">int</span> 
+                    buffpointer=0; buffpointer&lt;960; buffpointer+=2)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; temprand = rand();<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; buffer[buffpointer]= (<span style="color: blue">unsigned</span>
+                    <span style="color: blue">char</span>)((temprand&gt;&gt;bitshift)&amp;0xff);<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; buffer[buffpointer+1] = (<span style="color: blue">unsigned 
+                    char</span>)((temprand&gt;&gt;(8+bitshift))&amp;0xff);</span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 9.0pt; font-family: Courier New">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: blue">if</span> (bitshift!=0)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; buffer[buffpointer-1] |= (<span style="color: blue">unsigned</span>
+                    <span style="color: blue">char</span>)(temprand&lt;&lt;(8-bitshift));</span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 9.0pt; font-family: Courier New">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bitshift++;<br>
+&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bitshift%=8;</span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 9.0pt; font-family: Courier New">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: blue">if</span> (bitshift==0)<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; buffpointer--;</span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 9.0pt; font-family: Courier New">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+                    <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: green">// Write buffer to RNGmeter<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>send(sockfeed, (<span style="color: blue">const</span>
+                    <span style="color: blue">char</span>*)buffer, 960, 0);<br>
+&nbsp;&nbsp; }<br>
+                    &nbsp;&nbsp; <span style="color: blue">return</span> 0;<br>
+                    }</span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 10.0pt; font-family: Thorndale">&nbsp;</span><span style="font-size: 10.0pt; color: black">If 
+                    the PCQNG 2.0 is selected as the data source, RNGmeter will 
+                    open the PCQNG 2.0 if available.</span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 10.0pt; color: black">Other options 
+                    in the Run dialog include deselecting individual tests. By 
+                    default all tests are selected. A drop down menu allows the 
+                    orders of auto correlation to be changed (up to 32).&nbsp; Note: 
+                    The meta KS test and scaled meter will only run if all tests 
+                    are selected.</span><span style="font-size: 10.0pt; font-family: Thorndale; color: black">&nbsp;</span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 10.0pt; color: black">If a file 
+                    name/path is provided in the Run dialog to save the test 
+                    results, test results will be saved as csv (comma separated 
+                    values) files. Thus, naming your output file with the .csv 
+                    extension may be convenient (i.e. </span>
+                    <span style="font-size: 10.0pt; font-family: Thorndale; color: black">
+                    “</span><span style="font-size: 10.0pt; color: black">TestOut.csv</span><span style="font-size: 10.0pt; font-family: Thorndale; color: black">”</span><span style="font-size: 10.0pt; color: black">). 
+                    A snapshot of the cumulative probabilities of all tests is 
+                    saved to this file approximately every minute for the 
+                    duration of the test. The output looks like this:</span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 7.0pt; font-family: Courier New; color: black">
+                    Time,Bitcount,Meter,Bias,AC(1),AC(2),…,AC(31),AC(32),Entropy,Serial,OQSO,KS(+),KS(-)<br>
+                    1049336610,59.70E+6,23.8+,0.8312,0.7510,0.4319,…,0.3054,0.0823,0.6139,0.9164,0.7381,0.4460,0.7422<br>
+                    1049336671,119.67E+6,24.8+,0.4674,0.9234,0.4636,…,0.5060,0.4730,0.6105,0.4441,0.6469,0.4799,0.4346<br>
+                    1049336732,178.59E+6,25.4+,0.4506,0.7560,0.4708,…,0.8157,0.5175,0.5593,0.8615,0.6820,0.0578,0.7166<br>
+                    ...</span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 10.0pt; color: black">Where Time is 
+                    a local time stamp in seconds (struct time_t), Bitcount is 
+                    the total bits tested, Meter is the meter score for the 
+                    generator, Bias is the cumulative probability for the 1/0 
+                    balance, AC is the cumulative probability for the auto 
+                    correlation with its respective order in parentheses, 
+                    Entropy is the combined probability of the entropy test, 
+                    Serial is the cumulative probability for the Serial test, 
+                    OQSO is the combined probability for the monkey test, and 
+                    KS(+)/KS(-) are the results of the meta KS test.</span><span style="font-family: Thorndale; color: black">&nbsp;</span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 10.0pt; color: black">A test may be 
+                    stopped any time by pressing the Stop button. The Start 
+                    button will toggle between Start/Stop/Reset, depending on 
+                    the stage of operation. After a test has been stopped, 
+                    pressing the Reset button will clear the test values and the 
+                    Start button will toggle ready for a new test.<br>
+&nbsp;</span></p>
+                    <p class="MsoNormal" style="text-autospace: none">
+                    <span style="font-size: 10.0pt; color: black">Copyright 2003 
+                    The Quantum World Corporation. All Rights Reserved.</span></td>
+			</tr>
+		</table>
+	</body>
+</html>

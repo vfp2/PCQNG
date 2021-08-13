@@ -1,0 +1,122 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>PCQNG Error Handling</title>
+</head>
+
+<body>
+
+<font size="4">
+<table border="1" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1" cellpadding="4" bgcolor="#E1E1E1">
+  <tr>
+    <td width="100%">
+
+<font size="5">
+    <b>PCQNG Error Handling</b></font></td>
+  </tr>
+</table>
+</font>
+<p align="left">The PCQNG ActiveX control returns a set of custom HRESULT error 
+codes and implements the ISupportErrorInfo interface. Check your programmers 
+manual to get more information on how to handle ActiveX errors or exceptions.<br>
+&nbsp;</p>
+<p align="left"><b>Example 1 - Visual C++ (MFC)</b></p>
+<table style="border-collapse: collapse" borderColor="#111111" cellSpacing="8" cellPadding="0" width="100%" bgColor="#ffffff" border="0">
+  <tr>
+    <td width="100%"><font face="Courier New" size="2"><font color="#008000">// 
+    In C++ use a try...catch block to handle ActiveX &quot;exceptions&quot;</font><br>
+    try<br>
+    {<br>
+    &nbsp;&nbsp;&nbsp; <font color="#008000">// m_xPCQNG is a MFC generated wrapper class for 
+    the QNG control</font><br>
+    &nbsp;&nbsp;&nbsp; m_xPCQNG.GetRandUniform();<br>
+    }<br>
+    <font color="#008000">// ActiveX MFC wrapper throws COleDispatchException*</font><br>
+    catch (COleDispatchException* pDispatchException) <br>
+    {<br>
+    &nbsp;&nbsp;&nbsp; AfxMessageBox(pDispatchException-&gt;m_strDescription);<br>
+    &nbsp;&nbsp;&nbsp; m_xPCQNG.Reset(); <font color="#008000">// Optionally attempt 
+    restart/reset</font><br>
+    }</font></td>
+  </tr>
+</table>
+<p align="left"><b><br>
+Example 2 - Visual C++ (late binding with #import - console 
+application)</b></p>
+<table style="border-collapse: collapse" borderColor="#111111" cellSpacing="8" cellPadding="0" width="100%" bgColor="#ffffff" border="0">
+  <tr>
+    <td width="100%"><font face="Courier New" size="2"><font color="#008000">// 
+    #import directive using full path to &quot;PCQWQNG.dll&quot;<br>
+    // &quot;no_namespace&quot; avoids the need to use namespace &quot;PCQWQNG&quot;</font><br>
+    #import &quot;PCQWQNG.dll&quot; no_namespace named_guids<br>
+    <br>
+    #include &quot;stdio.h&quot;<br>
+    #include &quot;conio.h&quot;<br>
+    <br>
+    int main()<br>
+    {<br>
+    &nbsp;&nbsp;&nbsp; <font color="#008000">// Declare a smart pointer to PCQNG control</font><br>
+    &nbsp;&nbsp;&nbsp; IPCQNGPtr pPCQNG = 0;<br>
+    <br>
+    &nbsp;&nbsp;&nbsp; <font color="#008000">// Create instance of PCQNG control</font><br>
+    &nbsp;&nbsp;&nbsp; CoInitialize(NULL);<br>
+    &nbsp;&nbsp;&nbsp; pPCQNG.CreateInstance(CLSID_PCQNG);<br>
+    <br>
+    &nbsp;&nbsp;&nbsp; <font color="#008000">// try...catch PCQNG exception checking here</font><br>
+    &nbsp;&nbsp;&nbsp; try<br>
+    &nbsp;&nbsp;&nbsp; {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#008000">// Open device first</font><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pPCQNG-&gt;Open();<br>
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#008000">// Get Int32<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font>unsigned long Int32;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pPCQNG-&gt;get_RandInt32((long*)&amp;Int32);<br>
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#008000">&nbsp;// Display successful results</font><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;Int32: %u\n\n&quot;, Int32);<br>
+    &nbsp;&nbsp;&nbsp; }<br>
+    &nbsp;&nbsp;&nbsp; <font color="#008000">// _com_error&amp; thrown when late binding in C++</font><br>
+    &nbsp;&nbsp;&nbsp; catch (_com_error&amp; e)<br>
+    &nbsp;&nbsp;&nbsp; {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#008000">// Get exception description as a char*</font><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _bstr_t bDsc = e.Description();<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; char* sDsc = (char*)bDsc;<br>
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#008000">// Display exception results</font><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(&quot;Error %X - %s\n\n&quot;, e.Error(), sDsc);<br>
+    &nbsp;&nbsp;&nbsp; }<br>
+    <br>
+    &nbsp;&nbsp;&nbsp; <font color="#008000">// Wait for a keypress</font><br>
+    &nbsp;&nbsp;&nbsp; printf(&quot;A key to quit.\n&quot;);<br>
+    &nbsp;&nbsp;&nbsp; while(!kbhit());<br>
+    <br>
+    &nbsp;&nbsp;&nbsp; return 0;<br>
+    }</font></td>
+  </tr>
+</table>
+<p align="left"><b><br>
+Example 3 - Visual Basic</b></p>
+<table style="border-collapse: collapse" borderColor="#111111" cellSpacing="8" cellPadding="0" width="100%" bgColor="#ffffff" border="0">
+  <tr>
+    <td width="100%"><font face="Courier New" size="2">Sub ShowInt32()<br>
+    &nbsp;&nbsp;&nbsp; On Error GoTo error_handler<font color="#008000"><br>
+    &nbsp;&nbsp;&nbsp; ' xPCQNG is a PCQNG control on the VB form</font><br>
+    &nbsp;&nbsp;&nbsp; Dim RandInt = xPCQNG.RandInt32&nbsp; <br>
+    &nbsp;&nbsp;&nbsp; MsgBox(RandInt)&nbsp; <font color="#008000">' Display result</font><br>
+    <br>
+    &nbsp;&nbsp;&nbsp; Exit Sub<br>
+    error_handler:<br>
+    &nbsp;&nbsp; <font color="#008000">&nbsp;' Display error information</font><br>
+    &nbsp;&nbsp;&nbsp; MsgBox(Hex(Err.Number) &amp; &quot; - &quot; &amp; Err.Description)<br>
+    End Sub</font></td>
+  </tr>
+</table>
+<p align="left">&nbsp;</p>
+
+</body>
+
+</html>

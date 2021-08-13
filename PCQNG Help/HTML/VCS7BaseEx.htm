@@ -1,0 +1,149 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>VB 7.0/VC# 7.0 Basic Example</title>
+</head>
+
+<body>
+
+<font size="4">
+<table border="1" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber1" cellpadding="4" bgcolor="#E1E1E1">
+  <tr>
+    <td width="100%">
+
+<font size="5"><b>Visual Basic 7.0 and Visual C# 7.0 Basic Example</b></font></td>
+  </tr>
+</table>
+</font>
+<p align="left"><b>This example shows how  to use the PCQNG ActiveX interface 
+to get random 32-bit integers, uniform numbers [0,1), and normally distributed 
+numbers using the ComScire PCQNG True Random Number Generator. Visual Basic 7.0 
+and Visual C# 7.0 examples are almost identical, except for Step 5 where each 
+gets its respective code.</b></p>
+<p align="left">Click on <b><font size="4">
+<a target="_blank" href="VCS7BasicShots/VCS7BasExShot1.png">
+<img border="0" src="ScreenShot.gif" alt="ScreenShot" align="middle" width="34" height="34"></a></font></b> 
+for a screen shot of each step.<br>
+<b><font size="4">Step 1 · Create a new C# Windows Application
+<a target="_blank" href="VCS7BasicShots/VCS7BasExShot1.png">
+<img border="0" src="ScreenShot.gif" alt="ScreenShot" width="34" height="34"></a></font></b><br>
+· Start a new Visual C# project. Select &quot;Windows Application&quot; as the template. 
+Name the project and click OK.</p>
+<p align="left"><b><font size="4">Step 2 · Insert the PCQNG ActiveX control
+<a target="_blank" href="VCS7BasicShots/VCS7BasExShot2.png">
+<img border="0" src="ScreenShot.gif" alt="ScreenShot" width="34" height="34"></a></font></b><br>
+· In the Toolbox click the &quot;Components&quot; tab to open it. Then, right click in the 
+Toolbox and open &quot;Customize Toolbox...&quot;.<br>
+· In the &quot;COM Components&quot; find and place a checkmark next to &quot;ComScire PCQNG 
+Control 2.0&quot;. Click OK to add a PCQNG control item to the Toolbox.<br>
+· Click on the PCQNG icon in the Toolbox, then click on the form to add the 
+PCQNG control to your form.<br>
+· VB only: Right-click on the PCQNG icon on your form, select &quot;Properties&quot;. 
+Confirm that the &quot;(Name)&quot; property is &quot;AxPCQNG1&quot;. If not, change it.<br>
+· C# only: Right-click on the PCQNG icon on your form, select &quot;Properties&quot;. 
+Confirm that the &quot;(Name)&quot; property is &quot;axPCQNG1&quot;. If not, change it.</p>
+<p align="left"><b><font size="4">Step 3 · Add radio buttons for data type 
+selection <a target="_blank" href="VCS7BasicShots/VCS7BasExShot3.png">
+<img border="0" src="ScreenShot.gif" alt="ScreenShot" width="34" height="34"></a></font></b><br>
+· Click on the &quot;Windows Forms&quot; tab in the Toolbox.<br>
+· Add a group box to the form; then, place 3 radio buttons into the group box.<br>
+· Right click on the group box and select &quot;Properties&quot;. In the Properties area, 
+Change the group box &quot;(Name)&quot; and &quot;Text&quot; properties to &quot;Selection&quot;.<br>
+· Select each radio button to change their properties. For each radio button 
+change the &quot;(Name)&quot; and &quot;Text&quot; properties to &quot;Uniform&quot;, &quot;Normal&quot;, &quot;Int32&quot; 
+respectively.</p>
+<p align="left"><b><font size="4">Step 4 · Add labels for output
+<a target="_blank" href="VCS7BasicShots/VCS7BasExShot4.png">
+<img border="0" src="ScreenShot.gif" alt="ScreenShot" width="34" height="34"></a></font></b><br>
+· Add two Labels to the dialog.<br>
+· Right click on the first label Label and select &quot;Properties&quot;. Change the 
+&quot;Text&quot; property of the first label to &quot;Random Value:&quot;.<br>
+· Click on the second Label and change its &quot;(Name)&quot; and &quot;Text&quot; properties to 
+&quot;Out&quot;.</p>
+<p align="left"><font size="4"><b>VB Step 5 · Add code to a &quot;Go&quot; button </b></font><b><font size="4">
+<a target="_blank" href="VCS7BasicShots/VB7BasExShot5.png">
+<img border="0" src="ScreenShot.gif" alt="ScreenShot" width="34" height="34"></a> </font></b><font size="4">
+(see below for C# Step 5)</font><br>
+· Add a Button to the dialog and change the Button &quot;(Name)&quot; and &quot;Text&quot; 
+properties to &quot;Go&quot;.<br>
+· Double click on the &quot;Go&quot; button to edit the code section. Edit the Go_Click 
+section as follows:</p>
+<table style="border-collapse: collapse" borderColor="#111111" cellSpacing="0" cellPadding="8" bgColor="#ffffff" border="0">
+  <tr>
+    <td width="100%"><font SIZE="2"><font face="Courier New">Private Sub 
+    Go_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles 
+    Go.Click<br>
+    <br>
+&nbsp;&nbsp;&nbsp; AxPCQNG1.Open()<br>
+    <br>
+&nbsp;&nbsp;&nbsp; If Int32.Checked Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Out.Text = 
+    AxPCQNG1.RandInt32.ToString<br>
+&nbsp;&nbsp;&nbsp; End If<br>
+    <br>
+&nbsp;&nbsp;&nbsp; If Uniform.Checked Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Out.Text = 
+    AxPCQNG1.RandUniform.ToString<br>
+&nbsp;&nbsp;&nbsp; End If<br>
+    <br>
+&nbsp;&nbsp;&nbsp; If Normal.Checked Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Out.Text = 
+    AxPCQNG1.RandNormal.ToString<br>
+&nbsp;&nbsp;&nbsp; End If<br>
+    <br>
+&nbsp;&nbsp;&nbsp; AxPCQNG1.Close()<br>
+    <br>
+    End Sub</font></font></td>
+  </tr>
+</table>
+<p align="left"><font size="4"><b>C# Step 5 · Add code to a &quot;Go&quot; button </b></font><b><font size="4">
+<a target="_blank" href="VCS7BasicShots/VCS7BasExShot5.png">
+<img border="0" src="ScreenShot.gif" alt="ScreenShot" width="34" height="34"></a> </font></b><font size="4">
+(see above for VB Step 5)</font><br>
+· Add a Button to the dialog and change the Button &quot;(Name)&quot; and &quot;Text&quot; 
+properties to &quot;Go&quot;.<br>
+· Double click on the &quot;Go&quot; button to edit the code section. Edit the Go_Click 
+section as follows:</p>
+<table style="border-collapse: collapse" borderColor="#111111" cellSpacing="0" cellPadding="8" bgColor="#ffffff" border="0">
+  <tr>
+    <td width="100%"><font face="Courier New" size="2">private void 
+    Go_Click(object sender, System.EventArgs e)<br>
+    {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; axPCQNG1.Open();<br>
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (Int32.Checked)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Out.Text = axPCQNG1.RandInt32.ToString();<br>
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (Uniform.Checked)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Out.Text = axPCQNG1.RandUniform.ToString();<br>
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (Normal.Checked)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Out.Text = axPCQNG1.RandNormal.ToString();<br>
+    <br>
+&nbsp;&nbsp;&nbsp;&nbsp; axPCQNG1.Close();<br>
+    }</font></td>
+  </tr>
+</table>
+<p align="left" style="margin-left: 2"><b><font size="4">Step 6 · </font></b><font size="4"><b>
+Compile and run </b></font><b><font size="4">
+<a target="_blank" href="VCS7BasicShots/VCS7BasExShot6.png">
+<img border="0" src="ScreenShot.gif" alt="ScreenShot" width="34" height="34"></a></font></b><br>
+· Click on the Debug menu and select &quot;Start Without Debugging&quot; to run the 
+application. If the compiler finds errors, check to make sure the code appears 
+exactly as shown in step 5.<br>
+· Select the type of random number you wish to generate and press &quot;Go&quot; to 
+generate a new random number.<br>
+&nbsp;</p>
+<p align="left">VB only: <a href="Example%20Projects/VB7BasEx.zip">Click here 
+for complete code to the Visual Basic demo project (.zip)</a><br>
+C# only:&nbsp; <a href="Example%20Projects/VCS7BasEx.zip">Click here for 
+complete code to the Visual C# demo project (.zip)</a></p>
+<p align="left">&nbsp;</p>
+
+</body>
+
+</html>
